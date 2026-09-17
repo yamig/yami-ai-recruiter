@@ -21,7 +21,7 @@ export default async function handler(req, res) {
                 },
 
                 body: JSON.stringify({
-                    model: "gpt-5",
+                    model: "gpt-5.6-luna",
                     input: message
                 })
             }
