@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yami Gafni — AI Recruiter</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            height: 80vh;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 28px 32px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #6b7280;
+            font-size: 15px;
+        }
+
+        .chat {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .message {
+            max-width: 75%;
+            padding: 14px 18px;
+            border-radius: 14px;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .bot {
+            background: #f0f2f5;
+            margin-right: auto;
+        }
+
+        .user {
+            background: #2563eb;
+            color: white;
+            margin-left: auto;
+        }
+
+        .input-area {
+            display: flex;
+            padding: 18px;
+            border-top: 1px solid #e5e7eb;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+        }
+
+        button {
+            padding: 14px 22px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Yami Gafni — AI Recruiter</h1>
+        <p>Ask about Yami's education, projects, technical skills and experience.</p>
+    </div>
+
+    <div class="chat" id="chat">
+
+        <div class="message bot">
+            Hi! I'm Yami's AI Recruiter Assistant.
+            <br><br>
+            You can ask me about her education, technical skills,
+            projects, software development experience, or areas of interest.
+        </div>
+
+    </div>
+
+    <div class="input-area">
+        <input
+            type="text"
+            id="messageInput"
+            placeholder="Ask a question about Yami..."
+        >
+
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
+
+<script>
+
+function sendMessage() {
+
+    const input = document.getElementById("messageInput");
+    const chat = document.getElementById("chat");
+
+    const message = input.value.trim();
+
+    if (message === "") {
+        return;
+    }
+
+    // Add user's message
+    const userMessage = document.createElement("div");
+    userMessage.className = "message user";
+    userMessage.textContent = message;
+
+    chat.appendChild(userMessage);
+
+    input.value = "";
+
+    // Temporary response
+    const botMessage = document.createElement("div");
+    botMessage.className = "message bot";
+    botMessage.textContent =
+        "Thanks for your question. The AI connection will be added in the next step.";
+
+    chat.appendChild(botMessage);
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+</script>
+
+</body>
+</html>
